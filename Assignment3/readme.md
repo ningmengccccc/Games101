@@ -2,3 +2,5 @@
 * a.cwiseProduct(b) 对应位置相乘，a可以是一个值
 * a.normalized() 归一化
 * a.dot(b) 点乘 很常用
+* a.cross(b) 叉乘
+* a.transpose() 转置
