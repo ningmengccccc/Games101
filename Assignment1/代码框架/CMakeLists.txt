@@ -1,11 +1,14 @@
 cmake_minimum_required(VERSION 3.10)
 project(Rasterizer)
 
-find_package(OpenCV REQUIRED)
+set(EIGEN_DIR "D:/eigen")
+if(NOT EXISTS ${EIGEN_DIR})
+    message(FATAL_ERROR "Please check that the set Eigen directory is valid!")
+endif()
+include_directories(${EIGEN_DIR})
 
-set(CMAKE_CXX_STANDARD 17)
+find_package(OpenCV 3.4.13 REQUIRED)
+include_directories( ${OpenCV_INCLUDE_DIRS} )
 
-include_directories(/usr/local/include)
-
-add_executable(Rasterizer main.cpp rasterizer.hpp rasterizer.cpp Triangle.hpp Triangle.cpp)
-target_link_libraries(Rasterizer ${OpenCV_LIBRARIES})
+add_executable(Rasterizer main.cpp rasterizer.hpp rasterizer.cpp global.hpp Triangle.hpp Triangle.cpp)
+target_link_libraries(Rasterizer ${OpenCV_LIBS})
